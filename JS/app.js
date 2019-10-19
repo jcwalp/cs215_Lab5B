@@ -84,7 +84,7 @@ $(document).ready(function() {
       email: {
        required: true,
        email: true,
-       regex: /^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+       regex: /^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/g
       }
     }
 
