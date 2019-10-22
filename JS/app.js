@@ -76,7 +76,7 @@ $(document).ready(function() {
 
     /* test if  class reqd is blank or has incorrect chars in it;
     return false if this is the case */
-    var $emailValidator = $("#emailEntry").validate({
+    var $emailValidator = $("form").validate({
 
     /* state email rules here */
     rules: {
