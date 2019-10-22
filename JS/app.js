@@ -55,47 +55,36 @@ $(document).ready(function() {
 
     //variable holding regular expression
     //grabbing values of the two reqd fields
-    var lastname = $('#last_name').val();
-    var email = $('#emailEntry').val();
-    //first checking if they're empty
-    if (lastname.length < 1 || email.length < 1) {
-      alert("Please Fill Required Fields");
-      return false;
-      //then checking if last name is valid and if the email field is filled out if so the submit fires
-    } else if (!lastname.match(/[^A-Za-z\-\s]/g) && email.length != 0 && $isEmailValid) {
-      alert("Something");
-      return true;
-    }
-    //else it doesnt fire
-    else {
-      alert("Invalid");
-      return false;
-    }
-    console.log(lastname);
-    console.log(email);
+
+    $.validator.addMethod(
+      "regex",
+      function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+      },
+      "Please check your input."
+    );
 
     /* test if  class reqd is blank or has incorrect chars in it;
     return false if this is the case */
-    var $emailValidator = $("form").validate({
+    $("#signUpForm").validate({
 
-    /* state email rules here */
-    rules: {
+      /* state email rules here */
+      rules: {
 
-      email: {
-       required: true,
-       email: true,
-       regex: /^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/g
+        email: {
+          required: true,
+          email: true,
+        }
       }
-    }
+
 
     }); //end validate
-
-
-    var $isEmailValid = $emailValidator.element("#emailEntry");
-
-
-
-
+    if ($("#signUpForm").valid()) {
+      $("#signUpForm").submit();
+    } else {
+      alert("Not Valid");
+    }
   }); //end click
 }); //end ready
 
