@@ -130,6 +130,13 @@ a {
   padding-top: 6vh;
 }
 
+.right>img {
+  object-fit: contain;
+  width: 85%;
+  max-height: 100%;
+  padding-top: 6vh;
+}
+
 .footer {
   background: #f9e933;
   /* grid row start 3 and  row end 4 */
@@ -174,9 +181,11 @@ form {
 .left {
   padding-left: 10vw;
   padding-top: 5vh;
+  max-width: 100%;
 }
 
 .right {
+  max-width: 100%;
   padding-top: 2vh;
   padding-right: 5vw;
 }
